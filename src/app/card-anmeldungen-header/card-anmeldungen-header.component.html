@@ -1,0 +1,27 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Example DataTables Card-->
+    <div class="card col-md-12">
+      <div class="card-header">
+        <div class="input-group-append">Anmeldungen f&uuml;r:
+          <div class="input-group date">
+            <input id='fieldDate' type="text" class="form-control docs-date" name="date" value={{selectedDate}}>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default docs-datepicker-trigger">
+                  <i class="far fa-calendar-alt"></i>
+              </button>
+            </span>
+            <!--
+            <input type="text" class="form-control col-md-5" value="01.05.2018">
+            <span class="input-group-addon" >
+              <i class="far fa-calendar-alt fa-2x"></i>
+            </span>
+            -->
+            <a class="btn btn-outline-info offset-md-6" href="index.html">Daten importieren</a>
+          </div>
+        </div>
+      </div>
+      <app-anmeldungen></app-anmeldungen>
+    </div>
+  </div>
+</div>

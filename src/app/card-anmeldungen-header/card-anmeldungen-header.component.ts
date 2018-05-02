@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {DateFormatPipe} from "util/DateFormatPipe";
+import {Component, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-card-anmeldungen-header',
@@ -8,10 +8,15 @@ import {DateFormatPipe} from "util/DateFormatPipe";
 })
 export class CardAnmeldungenHeaderComponent implements OnInit {
 
-  selectedDate : Date;
+  protected selectedDate : Date;
+  protected showDate : String;
 
   constructor() {
     this.selectedDate = new Date(Date.now());
+    this.showDate = this.selectedDate.toLocaleDateString(
+      "de-DE",
+      { year: 'numeric', month: '2-digit', day: '2-digit'
+      })
   }
 
   ngOnInit() {

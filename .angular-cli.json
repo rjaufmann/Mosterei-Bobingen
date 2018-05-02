@@ -12,6 +12,7 @@
         "favicon.ico"
       ],
       "util": "util",
+      "ressources": "ressources",
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",

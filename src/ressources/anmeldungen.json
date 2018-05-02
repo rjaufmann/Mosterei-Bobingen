@@ -1,0 +1,132 @@
+{
+   "1": {
+      "Mitglied": "N",
+      "Beginn": "7:30",
+      "Vollstaendiger_Name": "Frembs, Bobingen",
+      "Telefonnummer": "0160 512 3435",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "50 kg"
+   },
+   "2": {
+      "Mitglied": "N",
+      "Beginn": "7:40",
+      "Vollstaendiger_Name": "Schneider, Mittelstetten",
+      "Telefonnummer": "08232 5712",
+      "Saftart": "P",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "ca 1,5 Ztr.",
+      "Mostmenge": "50 kg"
+   },
+   "3": {
+      "Mitglied": "N",
+      "Beginn": "7:50",
+      "Vollstaendiger_Name": "Kitzner",
+      "Telefonnummer": "0176 76050291",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "100 kg"
+   },
+   "4": {
+      "Mitglied": "N",
+      "Beginn": "8:10",
+      "Vollstaendiger_Name": "Mehltretter, Wehringen",
+      "Telefonnummer": "08234 3406",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "ca. 1,5 Ztr.",
+      "Mostmenge": "50 kg"
+   },
+   "5": {
+      "Mitglied": "N",
+      "Beginn": "8:20",
+      "Vollstaendiger_Name": "Sykora, Inningen",
+      "Telefonnummer": "0821 994322",
+      "Saftart": "SM",
+      "Abfuellung": "Flaschen",
+      "Bemerkung": "",
+      "Mostmenge": "50 kg"
+   },
+   "6": {
+      "Mitglied": "N",
+      "Beginn": "8:30",
+      "Vollstaendiger_Name": "Elstner, Mittelstetten",
+      "Telefonnummer": "08232 72798",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "100 kg"
+   },
+   "7": {
+      "Mitglied": "J",
+      "Beginn": "8:50",
+      "Vollstaendiger_Name": "Heuberger, Bo",
+      "Telefonnummer": "08234 3132",
+      "Saftart": "SM",
+      "Abfuellung": "Flaschen",
+      "Bemerkung": "ca. 1,5 Ztr. Ä+Bi",
+      "Mostmenge": "50 kg"
+   },
+   "8": {
+      "Mitglied": "N",
+      "Beginn": "9:00",
+      "Vollstaendiger_Name": "Ryba, Haunst.",
+      "Telefonnummer": "0821 91352",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "100 kg"
+   },
+   "9": {
+      "Mitglied": "N",
+      "Beginn": "9:20",
+      "Vollstaendiger_Name": "Wildegger, Obo",
+      "Telefonnummer": "08231 85192",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "1-2 Ztr.",
+      "Mostmenge": "100 kg"
+   },
+   "10": {
+      "Mitglied": "N",
+      "Beginn": "9:40",
+      "Vollstaendiger_Name": "Mailböck, Augsburg",
+      "Telefonnummer": "0821 65685",
+      "Saftart": "P",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "ca. 70 kg",
+      "Mostmenge": "50 kg"
+   },
+   "11": {
+      "Mitglied": "N",
+      "Beginn": "9:50",
+      "Vollstaendiger_Name": "Müller, SMÜ",
+      "Telefonnummer": "08232 79687",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "br. Quitten, schon reif",
+      "Mostmenge": "50 kg"
+   },
+   "12": {
+      "Mitglied": "N",
+      "Beginn": "10:00",
+      "Vollstaendiger_Name": "Werner Berisha",
+      "Telefonnummer": "017632010528",
+      "Saftart": "P",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "100 kg"
+   },
+   "13": {
+      "Mitglied": "N",
+      "Beginn": "10:20",
+      "Vollstaendiger_Name": "Hubert Hampel",
+      "Telefonnummer": "08234 1680",
+      "Saftart": "SM",
+      "Abfuellung": "BagInBox",
+      "Bemerkung": "",
+      "Mostmenge": "50 kg"
+   }
+}

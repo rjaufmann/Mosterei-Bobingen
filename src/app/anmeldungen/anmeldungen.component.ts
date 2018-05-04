@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import * as data from 'ressources/anmeldungen.json';
-import {Abfuellung_Enum, AnmeldungenModel, Mitglied_Enum, SaftArt_Enum} from "./anmeldungen.model";
-const ANMELDUNGEN_CONST = (<any>data);
+import {Component, OnInit} from '@angular/core';
+import * as data from 'resources/anmeldungen.json';
+import {Abfuellung_Enum, Mitglied_Enum, SaftArt_Enum, Anmeldung} from "./anmeldung";
+
 
 @Component({
   selector: 'app-anmeldungen',
@@ -10,25 +10,48 @@ const ANMELDUNGEN_CONST = (<any>data);
 })
 
 export class AnmeldungenComponent implements OnInit {
-  Anmeldungen : AnmeldungenModel[];
 
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log(ANMELDUNGEN_CONST);
-    let keys = Object.keys(ANMELDUNGEN_CONST);
-    console.log(keys.length);
-    for(var item of keys) {
-      console.log(item);
-      let Anmeldung = new AnmeldungenModel(Mitglied_Enum.J, "07:00", "Thomas Mustermann",
-        "0170 12345", SaftArt_Enum.SM, Abfuellung_Enum.BAGINBOX, "", "150 kg");
-      this.Anmeldungen[0] = Anmeldung;
-    }
-
-
-
+    let Anmeldungen = getAnmeldungen();
+    console.log(Anmeldungen);
   }
+}
 
+interface AnmeldungJSON {
+  Mitglied : string;
+  Beginn : string;
+  Vollstaendiger_Name : string;
+  Telefonnummer : string;
+  Saftart : string;
+  Abfuellung : string;
+  Bemerkung : string;
+  Mostmenge : string;
+
+}
+
+function decodeAnmeldung(json: AnmeldungJSON): Anmeldung {
+  return {
+    mitglied : Mitglied_Enum.J,
+    beginn : json.Beginn ? new Date(json.Beginn) : null,
+    vollstaendiger_Name : json.Vollstaendiger_Name,
+    telefonnummer : json.Telefonnummer,
+    saftart : SaftArt_Enum.SM,
+    abfuellung : Abfuellung_Enum.BAGINBOX,
+    bemerkung : json.Bemerkung,
+    mostmenge : json.Mostmenge
+  };
+}
+
+function getAnmeldungen(): Promise<Anmeldung[]> {
+  return loadData().then(data => {
+    return data.map(decodeAnmeldung);
+  });
+}
+
+function loadData(): Promise<AnmeldungJSON[]> {
+  return (<any>data);
 }

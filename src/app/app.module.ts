@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardAnmeldungenHeaderComponent } from './card-anmeldungen-header/card-anmeldungen-header.component';
 import { AnmeldungenComponent } from './anmeldungen/anmeldungen.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AnmeldungenComponent } from './anmeldungen/anmeldungen.component';
     AnmeldungenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent, NavigationComponent, FooterComponent, CardAnmeldungenHeaderComponent]

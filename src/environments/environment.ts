@@ -8,5 +8,5 @@ export const environment = {
   local : false,
 
   // URL of development API
-  apiUrl: 'http://localhost:8080/api/'
+  apiUrl: 'api/'
 };

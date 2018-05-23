@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AnmeldungService} from "./anmeldung.service";
 import {HttpClient} from "@angular/common/http";
+import {Anmeldung} from "./anmeldung";
 
 
 @Component({
@@ -13,21 +14,28 @@ import {HttpClient} from "@angular/common/http";
 export class AnmeldungenComponent implements OnInit {
 
   public message: string;
-  public values: any[];
+  public anmeldungenGeladen: boolean;
+  public anmeldungen: Anmeldung[];
 
   constructor(private _anmeldungeService: AnmeldungService) {
     this.message = 'Hello from HomeComponent constructor';
+    this.anmeldungenGeladen = false;
   }
 
   ngOnInit() {
     this._anmeldungeService
-      .getAll<any[]>()
-      .subscribe((data: any[]) => this.values = data,
+      .getAllAnmeldungen()
+      .subscribe((data: Anmeldung[]) => this.anmeldungen = data,
         error => () => {
+          console.log('keine Daten');
           console.error(error);
         },
         () => {
-          console.log('done loading anmeldungen')
+          if (this.anmeldungen.length > 0) {
+            console.log('laden Anmeldungen erfolgreich');
+            this.anmeldungenGeladen = true;
+          }
+          console.log('done loading anmeldungen');
         });
   }
 

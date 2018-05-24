@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AnmeldungService} from "./anmeldung.service";
-import {HttpClient} from "@angular/common/http";
 import {Anmeldung} from "./anmeldung";
 
 

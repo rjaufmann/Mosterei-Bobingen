@@ -21,7 +21,9 @@ export class AnmeldungService {
   private actionUrl: string;
 
   constructor(private http: HttpClient, private messageService: MessageService) {
-    this.actionUrl = environment.apiUrl + 'anmeldungen/';
+    let seletedDate = new Date();
+    seletedDate.setFullYear(2017,7,26);
+    this.actionUrl = environment.apiUrl + 'anmeldungen_by_Date/' + seletedDate.getTime();
   }
 
 

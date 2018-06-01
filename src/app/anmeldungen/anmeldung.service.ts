@@ -36,8 +36,10 @@ export class AnmeldungService {
   }
 
 
-  public getSingle<T>(id: number): Observable<T> {
-    return this.http.get<T>(this.actionUrl + id);
+  public getAnmeldung<Anmeldung>(id: number): Observable<Anmeldung> {
+    let getAnmeldungURL = environment.apiUrl + "anmeldungen/";
+    console.log("Requested-Id: " + id);
+    return this.http.get<Anmeldung>(getAnmeldungURL + id);
   }
   /**
    * Handle Http operation that failed.

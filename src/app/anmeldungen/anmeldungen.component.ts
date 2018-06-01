@@ -38,4 +38,5 @@ export class AnmeldungenComponent implements OnInit {
         });
   }
 
+
 }

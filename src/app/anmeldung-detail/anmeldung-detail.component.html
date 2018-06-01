@@ -1,0 +1,98 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.html">Anmeldungen</a>
+          </li>
+          <li class="breadcrumb-item active">Kunde</li>
+        </ol>
+      </div>
+      <div class="card-body">
+        <h2>Anmeldung für Kunde</h2>
+        <div class="container-fluid col-md-12">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-form-label col-md-4" for="kundeName">Vollständiger Name:</label>
+              <div class="col-md-5 offset-1">
+                <input class="form-control" id="kundeName" type="text" aria-describedby="nameHelp"
+                       value="{{anmeldung.fullName}}">
+              </div>
+            </div>
+            <div class="form-group" *ngIf="anmeldung.userId != '2650520'">
+              <label class="col-form-label col-md-4" for="kundeEMail">eMail:</label>
+              <div class="col-md-5 offset-1">
+                <input class="form-control" id="kundeEMail" type="email" aria-describedby="emailHelp"
+                       value="{{anmeldung.email}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label col-md-4" for="kundeTel">Telefonnummer:</label>
+              <div class="col-md-5 offset-1">
+                <input class="form-control" id="kundeTel" type="text" aria-describedby="telHelp"
+                       value="{{anmeldung.phone}}">
+              </div>
+            </div>
+            <div class="form-group" *ngIf="anmeldung.mobile !== null">
+              <label class="col-form-label col-md-4" for="kundeTel">Handy:</label>
+              <div class="col-md-5 offset-1">
+                <input class="form-control" id="kundeTel" type="text" aria-describedby="telHelp"
+                       value="{{anmeldung.mobile}}">
+              </div>
+            </div>
+            <div class="form-inline">
+              <label class="col-form-label col-md-1" for="kundeMitglied">Mitglied:</label>
+              <div class="col-md-5 offset-1" *ngIf="anmeldung.mitglied === 'J'; then MITGLIED else KEIN_MITGLIED">
+              </div>
+            </div>
+            <div class="form-inline">
+              <label class="col-form-label col-md-1" for="anmeldSaftartSM">Saftart:</label>
+              <div class="form-check offset-1">
+                <input class="form-control col-md-2" id="anmeldSaftartSM" type="checkbox" aria-describedby="mglHelp"
+                       checked="{{anmeldung.suessmost}}">Süssmost
+                <input class="form-control col-md-2" id="anmeldSaftartPS" type="checkbox" aria-describedby="mglHelp"
+                        checked="{{anmeldung.pressen_separiern}}">Pressen &amp; filtern
+                <input class="form-control col-md-2" id="anmeldSaftartP" type="checkbox" aria-describedby="mglHelp"
+                       checked="{{anmeldung.pressen}}">nur Pressen
+              </div>
+            </div>
+            <div class="form-inline">
+              <label class="col-form-label col-md-1" for="anmeldAbfuellung">Abfüllung:</label>
+              <div class="col-md-4 offset-1">
+                <input class="form-check-inline form-control" id="anmeldAbfuellung" type="checkbox"
+                       aria-describedby="mglHelp"
+                       checked="true">BagInBox
+                <input class="form-check-inline form-control" id="anmeldAbfuellung2" type="checkbox"
+                       aria-describedby="mglHelp">Flaschen
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label col-md-2" for="anmeldMenge">Angemeldete Menge:</label>
+              <div class="col-md-5 offset-1">
+                <input class="form-control mb-lg-2" id="anmeldMenge" type="text" aria-describedby="telHelp"
+                       value="{{anmeldung.angemeldeteMenge}}">
+              </div>
+            </div>
+            <div class="form-group" *ngIf="anmeldung.bemerkung != null">
+              <label class="col-form-label col-md-4" for="anmeldBemerk">Bemerkungen Kunde:</label>
+              <div class="col-md-5 offset-1">
+                <textarea class="form-control" id="anmeldBemerk" type="text" aria-describedby="telHelp"
+                          disabled="true">{{anmeldung.bemerkung}}</textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #MITGLIED>
+  <input class="form-check-inline form-control offset-1" id="kundeMitglied" type="checkbox"
+         aria-describedby="mglHelp" checked>Mitglied im Verein
+</ng-template>
+<ng-template #KEIN_MITGLIED>
+  <input class="form-check-inline form-control offset-1" id="kundeMitglied" type="checkbox"
+         aria-describedby="mglHelp">Mitglied im Verein
+</ng-template>

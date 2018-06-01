@@ -1,44 +1,67 @@
-<div class="card-body">
-  <div class="table-responsive">
-    <div *ngIf="anmeldungenGeladen">
-    <table class="table table-bordered table-hover" id="dataTable" cellspacing="0">
-      <thead>
-      <tr>
-        <th>Position</th>
-        <th>Beginn</th>
-        <th>Vollst&auml;ndiger Name</th>
-        <th>Mostmenge</th>
-        <th>Saftart</th>
-        <th>Abf&uuml;llung</th>
-        <th>Bemerkung</th>
-      </tr>
-      </thead>
-      <tfoot>
-      <tr>
-        <th>Position</th>
-        <th>Beginn</th>
-        <th>Vollst&auml;ndgier Name</th>
-        <th>Mostmenge</th>
-        <th>Saftart</th>
-        <th>Abf&uuml;llung</th>
-        <th>Bemerkung</th>
-      </tr>
-      </tfoot>
-      <tbody *ngFor="let anmeldung of anmeldungen; let pos = index">
-      <tr>
-        <td>{{pos + 1}}</td>
-        <td>{{anmeldung.beginn| date: 'HH:mm'}}</td>
-        <td>{{anmeldung.fullName}}</td>
-        <td>{{anmeldung.angemeldeteMenge}}</td>
-        <td>{{anmeldung.saftart}}</td>
-        <td>{{anmeldung.abfuellung}}</td>
-        <td>{{anmeldung.bemerkung}}</td>
-      </tr>
-      </tbody>
-    </table>
-    </div>
-    <div *ngIf="!anmeldungenGeladen">
-      <h4>Anmeldungen sind noch nicht geladen. Bitte Daten importieren.</h4>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <!-- Example DataTables Card-->
+    <div class="card">
+      <div class="card-header">
+        <div class="input-group-append">Anmeldungen f&uuml;r:
+          <div class="input-group date">
+            <input id='fieldDate' type="text" class="form-control docs-date" name="date" value={{showDate}}
+                   placeholder="dd.mm.yyyy">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default docs-datepicker-trigger">
+                  <i class="far fa-calendar-alt"></i>
+              </button>
+            </span>
+            <a class="btn btn-outline-info offset-md-6" href="index.html">Daten importieren</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div *ngIf="anmeldungenGeladen">
+            <table class="table table-bordered table-hover" id="dataTable" cellspacing="0">
+              <thead>
+              <tr>
+                <th>Position</th>
+                <th>Beginn</th>
+                <th>Vollst&auml;ndiger Name</th>
+                <th>Mostmenge</th>
+                <th>Saftart</th>
+                <th>Abf&uuml;llung</th>
+                <th>Bemerkung</th>
+              </tr>
+              </thead>
+              <tfoot>
+              <tr>
+                <th>Position</th>
+                <th>Beginn</th>
+                <th>Vollst&auml;ndgier Name</th>
+                <th>Mostmenge</th>
+                <th>Saftart</th>
+                <th>Abf&uuml;llung</th>
+                <th>Bemerkung</th>
+              </tr>
+              </tfoot>
+              <tbody *ngFor="let anmeldung of anmeldungen; let pos = index">
+              <tr class="clickable-row" routerLink="/anmeldung/{{anmeldung.id}}">
+                <td>{{pos + 1}}</td>
+                <td>{{anmeldung.beginn| date: 'HH:mm'}}</td>
+                <td>{{anmeldung.fullName}}</td>
+                <td>{{anmeldung.angemeldeteMenge}}</td>
+                <td>{{anmeldung.saftart}}</td>
+                <td>{{anmeldung.abfuellung}}</td>
+                <td>{{anmeldung.bemerkung}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="!anmeldungenGeladen">
+            <h4>Anmeldungen sind noch nicht geladen. Bitte Daten importieren.</h4>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+

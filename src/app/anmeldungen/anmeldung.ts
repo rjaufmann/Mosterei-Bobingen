@@ -33,6 +33,9 @@ export interface Anmeldung {
   abfuellung: string;
   mitglied: string;
   bemerkung?: any;
+  pressen: boolean;
+  pressen_separiern: boolean;
+  suessmost: boolean;
 }
 
 

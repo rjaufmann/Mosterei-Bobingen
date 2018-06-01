@@ -1,17 +1,19 @@
 <!-- Navigation-->
-  <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-        <a class="nav-link" href="index.html">
-          <i class="fa fa-fw fa-table"></i>
-          <span class="nav-link-text">Anmeldungen</span>
-        </a>
-      </li>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+      <a class="nav-link" href="index.html">
+        <i class="fa fa-fw fa-table"></i>
+        <span class="nav-link-text">Anmeldungen</span>
+      </a>
+    </li>
+    <div *ngIf="anmeldung != null">
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kunde">
-        <a class="nav-link" href="Kunde.html">
+        <a class="nav-link" routerLink="/anmeldung/{{anmeldung.id}}">
           <i class="fa fa-fw fa-user"></i>
           <span class="nav-link-text">Kunde</span>
         </a>
       </li>
-    </ul>
-  </div>
+    </div>
+  </ul>
+</div>

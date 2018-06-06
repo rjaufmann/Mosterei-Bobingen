@@ -29,8 +29,8 @@ export interface Anmeldung {
   phone: string;
   mobile?: any;
   angemeldeteMenge: string;
-  saftart: string;
-  abfuellung: string;
+  saftart: string[];
+  abfuellung: string[];
   mitglied: string;
   bemerkung?: any;
   pressen: boolean;

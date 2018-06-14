@@ -61,18 +61,18 @@ export class AnmeldungDetailComponent implements OnInit {
         console.error(error);
       },
       () => {
-        if (this.anmeldung != null) {
+        if (this._anmeldung != null) {
           console.log('laden Anmeldung erfolgreich');
-          if (this.anmeldung.saftart.includes(SaftArt_Enum.SM)) {
-            this.anmeldung.suessmost = true;
+          if (this._anmeldung.saftart.includes(SaftArt_Enum.SM)) {
+            this._anmeldung.suessmost = true;
           }
-          if (this.anmeldung.saftart.includes(SaftArt_Enum.P)) {
-            this.anmeldung.pressen = true;
+          if (this._anmeldung.saftart.includes(SaftArt_Enum.P)) {
+            this._anmeldung.pressen = true;
           }
-          if (this.anmeldung.saftart.includes(SaftArt_Enum.PS)) {
-            this.anmeldung.pressen_separiern = true;
+          if (this._anmeldung.saftart.includes(SaftArt_Enum.PS)) {
+            this._anmeldung.pressen_separiern = true;
           }
-          console.log("Anmeldung-ID: " + this.anmeldung);
+          console.log("Anmeldung-ID: " + this._anmeldung);
         }
         console.log('done loading anmeldungen');
       });

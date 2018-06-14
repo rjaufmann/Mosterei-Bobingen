@@ -11,7 +11,7 @@
         </ol>
       </div>
       <div class="card-body">
-        <h2>Anmeldung für Kunde</h2>
+        <h2>Anmeldung f&uuml;r Kunde</h2>
         <div class="container-fluid col-md-12">
           <form class="form-horizontal">
             <div class="form-group">
@@ -38,7 +38,7 @@
             <div class="form-group" *ngIf="anmeldung.mobile !== null">
               <label class="col-form-label col-md-4" for="kundeTel">Handy:</label>
               <div class="col-md-5 offset-1">
-                <input class="form-control" id="kundeTel" type="text" aria-describedby="telHelp"
+                <input class="form-control" id="mobilTel" type="text" aria-describedby="telHelp"
                        value="{{anmeldung.mobile}}">
               </div>
             </div>
@@ -58,14 +58,15 @@
                        checked="{{anmeldung.pressen}}">nur Pressen
               </div>
             </div>
-            <div class="form-inline">
+            <div class="form-inline" *ngIf="anmeldung.suessmost">
               <label class="col-form-label col-md-1" for="anmeldAbfuellung">Abfüllung:</label>
               <div class="col-md-4 offset-1">
                 <input class="form-check-inline form-control" id="anmeldAbfuellung" type="checkbox"
                        aria-describedby="mglHelp"
-                       checked="true">BagInBox
+                       checked="{{anmeldung.bagInBox}}">BagInBox
                 <input class="form-check-inline form-control" id="anmeldAbfuellung2" type="checkbox"
-                       aria-describedby="mglHelp">Flaschen
+                       aria-describedby="mglHelp"
+                       checked="{{anmeldung.flaschen}}">Flaschen
               </div>
             </div>
             <div class="form-group">
@@ -81,6 +82,9 @@
                 <textarea class="form-control" id="anmeldBemerk" type="text" aria-describedby="telHelp"
                           disabled="true">{{anmeldung.bemerkung}}</textarea>
               </div>
+            </div>
+            <div class="form-control">
+              <a class="btn btn-outline-info offset-md-6" href="mosten">abrechnen</a>
             </div>
           </form>
         </div>

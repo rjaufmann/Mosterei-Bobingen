@@ -1,36 +1,46 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
 
 
-import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
-import { AnmeldungenComponent } from './anmeldungen/anmeldungen.component';
+import {AppComponent} from './app.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {FooterComponent} from './footer/footer.component';
+import {AnmeldungenComponent} from './anmeldungen/anmeldungen.component';
 import {MessageService} from "./message.service";
-import { RouterModule, Routes} from "@angular/router";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AnmeldungDetailComponent } from './anmeldung-detail/anmeldung-detail.component';
+import {RouterModule, Routes} from "@angular/router";
+//import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AnmeldungDetailComponent} from './anmeldung-detail/anmeldung-detail.component';
+import {MostenComponent} from './mosten/mosten.component';
+
 
 const appRoutes: Routes = [
-  { path: 'anmeldung/:id',
-    component: AnmeldungDetailComponent
+  {
+    path: 'anmeldung',
+    component: AnmeldungenComponent,
+    data: {title: 'Anmeldungen Mosterei Bobingen'}
   },
   {
-    path: 'anmeldungen',
-    component: AnmeldungenComponent,
-    data: { title: 'Anmeldungen Mosterei Bobingen' }
+    path: 'anmeldung/:id',
+    component: AnmeldungDetailComponent,
+    data: {title: 'Anmeldung f&uuml;r Kunde:'},
   },
-  { path: '',
-    redirectTo: '/anmeldungen',
+  {
+    path: 'mosten',
+    component: MostenComponent,
+    data: {title: 'Abrechnung Kunde:'}
+  },
+  {
+    path: '',
+    redirectTo: '/anmeldung',
     pathMatch: 'full'
   },
-  { path: 'index.html',
-    redirectTo: '/anmeldungen',
+  {
+    path: 'index.html',
+    redirectTo: '/anmeldung',
     pathMatch: 'full'
   },
-  { path: '**',
-    component: PageNotFoundComponent }
+
 ];
 
 @NgModule({
@@ -39,20 +49,24 @@ const appRoutes: Routes = [
     NavigationComponent,
     FooterComponent,
     AnmeldungenComponent,
-    PageNotFoundComponent,
-    AnmeldungDetailComponent
+    AnmeldungDetailComponent,
+    MostenComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      {enableTracing: true} // <-- debugging purposes only
     ),
     // other imports here
     BrowserModule,
     HttpClientModule
   ],
+  exports: [
+    RouterModule
+  ],
   providers: [MessageService],
-  bootstrap: [AppComponent, NavigationComponent, FooterComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

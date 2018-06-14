@@ -33,9 +33,12 @@ export interface Anmeldung {
   abfuellung: string[];
   mitglied: string;
   bemerkung?: any;
+  mostenId?:number;
+  suessmost:boolean;
   pressen: boolean;
   pressen_separiern: boolean;
-  suessmost: boolean;
+  bagInBox: boolean;
+  flaschen: boolean;
 }
 
 

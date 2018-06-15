@@ -14,6 +14,7 @@ export class AnmeldungenComponent implements OnInit {
 
   public message: string;
   public anmeldungenGeladen: boolean;
+  public datenImportiert: boolean = false;
   public anmeldungen: Anmeldung[];
   selectedDate: Date = new Date();
 
@@ -23,27 +24,33 @@ export class AnmeldungenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedDate.setFullYear(2017, 7, 26);
   }
 
   getAllAnmeldungen() {
-    this.selectedDate.setFullYear(2017,7,26);
+    this.datenImportiert = true;
 
     this._dataProviderService
       .getAllAnmeldungen(this.selectedDate)
       .subscribe((data: Anmeldung[]) => {
           this.anmeldungen = data;
-          },
+          if (this.anmeldungen != null && this.anmeldungen.length != 0) {
+            console.log('AnmeldungenComponent.ngOnInit() - laden Anmeldungen erfolgreich');
+            console.log('done loading anmeldungen - Anzahl geladener Anmeldungen: ' + this.anmeldungen.length);
+            this.anmeldungenGeladen = true;
+          }
+        },
         error => () => {
           console.log('keine Daten');
           console.error(error);
         },
         () => {
-          console.log('AnmeldungenComponent.ngOnInit() - laden Anmeldungen erfolgreich');
+          console.log('AnmeldungenComponent.ngOnInit() - laden Anmeldungen complete');
           if (this.anmeldungen.length > 0) {
             console.log('AnmeldungenComponent.ngOnInit() - anmeldungen.length > 0');
             this.anmeldungenGeladen = true;
           }
-          console.log('done loading anmeldungen');
+          console.log('Anmeldungen complete');
         });
   }
 

@@ -14,6 +14,7 @@ import {DataProviderService} from "../share/data-provider.service";
 export class AnmeldungDetailComponent implements OnInit {
 
   private _anmeldung: Anmeldung;
+  private _loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,11 +32,14 @@ export class AnmeldungDetailComponent implements OnInit {
     console.log("Observable: " + anmeldung$);
     anmeldung$.subscribe(
       (data: Anmeldung) => {
-        console.log('laden Anmeldung erfolgreich');
+        this._loading = true;
 
         this._anmeldung = data;
 
         if (this._anmeldung != null) {
+          console.log('laden Anmeldung erfolgreich');
+          console.log("Anmeldung-ID: " + this._anmeldung);
+          this._loading = false;
           if (this._anmeldung.saftart.includes(SaftArt_Enum.SM)) {
             this._anmeldung.suessmost = true;
           }
@@ -51,10 +55,7 @@ export class AnmeldungDetailComponent implements OnInit {
           if (this._anmeldung.abfuellung.includes(Abfuellung_Enum.FLASCHEN)) {
             this._anmeldung.flaschen = true;
           }
-          console.log("Anmeldung-ID: " + this._anmeldung);
         }
-
-        console.log("Anmeldung-ID: " + this._anmeldung);
       },
       error => () => {
         console.log('keine Daten');

@@ -7,6 +7,8 @@ import {Anmeldung} from "../anmeldungen/anmeldung";
 import {catchError, tap} from "rxjs/operators";
 import {MessageService} from "../message.service";
 import {of} from "rxjs/observable/of";
+import {nextTick} from "q";
+import {error} from "util";
 
 @Injectable()
 export class DataProviderService {
@@ -20,29 +22,34 @@ export class DataProviderService {
   };
 
 
-  getAllAnmeldungen(seletedDate: Date){
-    console.log('DataProviderService.getAllAnmeldungen called with param selectedDate: '+ seletedDate);
-    let actionURL = this.baseURL +  'anmeldungen_by_Date/' + seletedDate.getTime();
+  getAllAnmeldungen(seletedDate: Date) {
+    console.log('DataProviderService.getAllAnmeldungen called with param selectedDate: ' + seletedDate);
+    let actionURL = this.baseURL + 'anmeldungen_by_Date/' + seletedDate.getTime();
+    console.log('DataProviderService.getAllAnmeldungen called URL: ' + actionURL);
     let data = this.http.get<Anmeldung[]>(actionURL)
-      .pipe(
-        tap(Anmeldung => this.log(`fetched Anmeldung`)),
-        catchError(this.handleError('getAllAnmeldungen', []))
-      );
-    this.alleAnmeldungen.next(data);
-    console.log('DataProviderService.getAllAnmeldungen finished with data: '+ data);
+    data.subscribe(
+      _alleAnmeldungen => {
+        this.alleAnmeldungen.next(_alleAnmeldungen);
+        console.log('DataProviderService.getAllAnmeldungen finished with alleAnmeldungen: ' + this.alleAnmeldungen);
+      }, error => {
+        console.log('DataProviderService.getAllAnmeldungen error fetching alleAmeldungen');
+      });
+    console.log('DataProviderService.getAllAnmeldungen finished with data: ' + data);
     return this.alleAnmeldungen.asObservable();
   }
 
   selectAnmeldungDetail<Anmeldung>(id: number): Observable<Anmeldung> {
-    console.log('DataProviderService.selectAnmeldungDetail called with param id: '+ id);
+    console.log('DataProviderService.selectAnmeldungDetail called with param id: ' + id);
     let actionURL = this.baseURL + "anmeldungen/" + id;
     console.log("Requested-Id: " + id);
-    let data = this.http.get<Anmeldung>(actionURL)
-      .pipe(
-      tap(Anmeldung => this.log(`fetched getSelectedAnmeldung`)),
-      catchError(this.handleError('getSelectedAnmeldung', []))
-    );
-    this.selectedAnmeldung.next(data);
+    let data = this.http.get<Anmeldung>(actionURL);
+    data.subscribe(
+      _selectedAnmeldung => {
+        this.selectedAnmeldung.next(_selectedAnmeldung);
+        console.log('DataProviderService.selectAnmeldungDetail finished with selectAnmeldungDetail');
+      }, error => {
+        console.log('DataProviderService.selectAnmeldungDetail error fetching alleAmeldungen');
+      });
     return this.selectedAnmeldung.asObservable();
   }
 
@@ -56,7 +63,7 @@ export class DataProviderService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

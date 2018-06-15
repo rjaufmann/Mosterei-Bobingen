@@ -6,7 +6,7 @@
         <div class="input-group-append">Anmeldungen f&uuml;r:
           <div class="input-group date">
             <input id='fieldDate' type="text" class="form-control docs-date" name="date"
-                   placeholder="dd.mm.yyyy">
+                   placeholder="dd.mm.yyyy" value="{{selectedDate | date: 'dd.MM.yyyy'}}">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default docs-datepicker-trigger">
                   <i class="far fa-calendar-alt"></i>
@@ -18,45 +18,65 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <div *ngIf="anmeldungenGeladen">
-            <table class="table table-bordered table-hover" id="dataTable" cellspacing="0">
-              <thead>
-              <tr>
-                <th>Position</th>
-                <th>Beginn</th>
-                <th>Vollst&auml;ndiger Name</th>
-                <th>Mostmenge</th>
-                <th>Saftart</th>
-                <th>Abf&uuml;llung</th>
-                <th>Bemerkung</th>
-              </tr>
-              </thead>
-              <tfoot>
-              <tr>
-                <th>Position</th>
-                <th>Beginn</th>
-                <th>Vollst&auml;ndgier Name</th>
-                <th>Mostmenge</th>
-                <th>Saftart</th>
-                <th>Abf&uuml;llung</th>
-                <th>Bemerkung</th>
-              </tr>
-              </tfoot>
-              <tbody *ngFor="let anmeldung of anmeldungen; let pos = index">
-              <tr class="clickable-row" routerLink="/anmeldung/{{anmeldung.id}}">
-                <td>{{pos + 1}}</td>
-                <td>{{anmeldung.beginn| date: 'HH:mm'}}</td>
-                <td>{{anmeldung.fullName}}</td>
-                <td>{{anmeldung.angemeldeteMenge}}</td>
-                <td>{{anmeldung.saftart.toString()}}</td>
-                <td>{{anmeldung.abfuellung.toString()}}</td>
-                <td>{{anmeldung.bemerkung}}</td>
-              </tr>
-              </tbody>
-            </table>
+          <div *ngIf="datenImportiert">
+            <div *ngIf="anmeldungenGeladen">
+              <table class="table table-bordered table-hover" id="dataTable" cellspacing="0">
+                <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Beginn</th>
+                  <th>Vollst&auml;ndiger Name</th>
+                  <th>Mostmenge</th>
+                  <th>Saftart</th>
+                  <th>Abf&uuml;llung</th>
+                  <th>Bemerkung</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                  <th>Position</th>
+                  <th>Beginn</th>
+                  <th>Vollst&auml;ndgier Name</th>
+                  <th>Mostmenge</th>
+                  <th>Saftart</th>
+                  <th>Abf&uuml;llung</th>
+                  <th>Bemerkung</th>
+                </tr>
+                </tfoot>
+                <tbody *ngFor="let anmeldung of anmeldungen; let pos = index">
+                <tr class="clickable-row" routerLink="/anmeldung/{{anmeldung.id}}">
+                  <td>{{pos + 1}}</td>
+                  <td>{{anmeldung.beginn| date: 'HH:mm'}}</td>
+                  <td>{{anmeldung.fullName}}</td>
+                  <td>{{anmeldung.angemeldeteMenge}}</td>
+                  <td>{{anmeldung.saftart.toString()}}</td>
+                  <td>{{anmeldung.abfuellung.toString()}}</td>
+                  <td>{{anmeldung.bemerkung}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="!anmeldungenGeladen">
+              <h4 align="center">Anmeldungen werden geladen</h4>
+              <div class="sk-fading-circle">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+              </div>
+
+            </div>
           </div>
-          <div *ngIf="!anmeldungenGeladen">
-            <h4>Anmeldungen sind noch nicht geladen. Bitte Daten importieren.</h4>
+          <div *ngIf="!datenImportiert">
+            <h4 align="center">Anmeldungen sind noch nicht geladen. Bitte Daten importieren.</h4>
           </div>
         </div>
       </div>

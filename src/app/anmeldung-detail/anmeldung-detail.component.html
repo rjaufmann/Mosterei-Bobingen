@@ -11,82 +11,100 @@
         </ol>
       </div>
       <div class="card-body">
-        <h2>Anmeldung f&uuml;r Kunde</h2>
-        <div class="container-fluid col-md-12">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-form-label col-md-4" for="kundeName">Vollständiger Name:</label>
-              <div class="col-md-5 offset-1">
-                <input class="form-control" id="kundeName" type="text" aria-describedby="nameHelp"
-                       value="{{anmeldung.fullName}}">
+        <div *ngIf="!_loading">
+          <h2>Anmeldung f&uuml;r Kunde: {{_anmeldung.fullName}}</h2>
+          <div class="container-fluid col-md-12">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-form-label col-md-4" for="kundeName">Vollständiger Name:</label>
+                <div class="col-md-5 offset-1">
+                  <input class="form-control" id="kundeName" type="text" aria-describedby="nameHelp"
+                         value="{{_anmeldung.fullName}}">
+                </div>
               </div>
-            </div>
-            <div class="form-group" *ngIf="anmeldung.userId != '2650520'">
-              <label class="col-form-label col-md-4" for="kundeEMail">eMail:</label>
-              <div class="col-md-5 offset-1">
-                <input class="form-control" id="kundeEMail" type="email" aria-describedby="emailHelp"
-                       value="{{anmeldung.email}}">
+              <div class="form-group">
+                <label class="col-form-label col-md-4" for="kundeEMail">eMail:</label>
+                <div class="col-md-5 offset-1">
+                  <input class="form-control" id="kundeEMail" type="email" aria-describedby="emailHelp"
+                         value="{{_anmeldung.email}}">
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-form-label col-md-4" for="kundeTel">Telefonnummer:</label>
-              <div class="col-md-5 offset-1">
-                <input class="form-control" id="kundeTel" type="text" aria-describedby="telHelp"
-                       value="{{anmeldung.phone}}">
+              <div class="form-group">
+                <label class="col-form-label col-md-4" for="kundeTel">Telefonnummer:</label>
+                <div class="col-md-5 offset-1">
+                  <input class="form-control" id="kundeTel" type="text" aria-describedby="telHelp"
+                         value="{{_anmeldung.phone}}">
+                </div>
               </div>
-            </div>
-            <div class="form-group" *ngIf="anmeldung.mobile !== null">
-              <label class="col-form-label col-md-4" for="kundeTel">Handy:</label>
-              <div class="col-md-5 offset-1">
-                <input class="form-control" id="mobilTel" type="text" aria-describedby="telHelp"
-                       value="{{anmeldung.mobile}}">
+              <div class="form-group" *ngIf="_anmeldung.mobile !== null">
+                <label class="col-form-label col-md-4" for="kundeTel">Handy:</label>
+                <div class="col-md-5 offset-1">
+                  <input class="form-control" id="mobilTel" type="text" aria-describedby="telHelp"
+                         value="{{_anmeldung.mobile}}">
+                </div>
               </div>
-            </div>
-            <div class="form-inline">
-              <label class="col-form-label col-md-1" for="kundeMitglied">Mitglied:</label>
-              <div class="col-md-5 offset-1" *ngIf="anmeldung.mitglied === 'J'; then MITGLIED else KEIN_MITGLIED">
+              <div class="form-inline">
+                <label class="col-form-label col-md-1" for="kundeMitglied">Mitglied:</label>
+                <div class="col-md-5 offset-1" *ngIf="_anmeldung.mitglied === 'J'; then MITGLIED else KEIN_MITGLIED">
+                </div>
               </div>
-            </div>
-            <div class="form-inline">
-              <label class="col-form-label col-md-1" for="anmeldSaftartSM">Saftart:</label>
-              <div class="form-check offset-1">
-                <input class="form-control col-md-2" id="anmeldSaftartSM" type="checkbox" aria-describedby="mglHelp"
-                       checked="{{anmeldung.suessmost}}">Süssmost
-                <input class="form-control col-md-2" id="anmeldSaftartPS" type="checkbox" aria-describedby="mglHelp"
-                        checked="{{anmeldung.pressen_separiern}}">Pressen &amp; filtern
-                <input class="form-control col-md-2" id="anmeldSaftartP" type="checkbox" aria-describedby="mglHelp"
-                       checked="{{anmeldung.pressen}}">nur Pressen
+              <div class="form-inline">
+                <label class="col-form-label col-md-1" for="anmeldSaftartSM">Saftart:</label>
+                <div class="form-check offset-1">
+                  <input class="form-control col-md-2" id="anmeldSaftartSM" type="checkbox" aria-describedby="mglHelp"
+                         checked="{{_anmeldung.suessmost}}">Süssmost
+                  <input class="form-control col-md-2" id="anmeldSaftartPS" type="checkbox" aria-describedby="mglHelp"
+                         checked="{{_anmeldung.pressen_separiern}}">Pressen &amp; filtern
+                  <input class="form-control col-md-2" id="anmeldSaftartP" type="checkbox" aria-describedby="mglHelp"
+                         checked="{{_anmeldung.pressen}}">nur Pressen
+                </div>
               </div>
-            </div>
-            <div class="form-inline" *ngIf="anmeldung.suessmost">
-              <label class="col-form-label col-md-1" for="anmeldAbfuellung">Abfüllung:</label>
-              <div class="col-md-4 offset-1">
-                <input class="form-check-inline form-control" id="anmeldAbfuellung" type="checkbox"
-                       aria-describedby="mglHelp"
-                       checked="{{anmeldung.bagInBox}}">BagInBox
-                <input class="form-check-inline form-control" id="anmeldAbfuellung2" type="checkbox"
-                       aria-describedby="mglHelp"
-                       checked="{{anmeldung.flaschen}}">Flaschen
+              <div class="form-inline" *ngIf="_anmeldung.suessmost">
+                <label class="col-form-label col-md-1" for="anmeldAbfuellung">Abfüllung:</label>
+                <div class="col-md-4 offset-1">
+                  <input class="form-check-inline form-control" id="anmeldAbfuellung" type="checkbox"
+                         aria-describedby="mglHelp"
+                         checked="{{_anmeldung.bagInBox}}">BagInBox
+                  <input class="form-check-inline form-control" id="anmeldAbfuellung2" type="checkbox"
+                         aria-describedby="mglHelp"
+                         checked="{{_anmeldung.flaschen}}">Flaschen
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-form-label col-md-2" for="anmeldMenge">Angemeldete Menge:</label>
-              <div class="col-md-5 offset-1">
-                <input class="form-control mb-lg-2" id="anmeldMenge" type="text" aria-describedby="telHelp"
-                       value="{{anmeldung.angemeldeteMenge}}">
+              <div class="form-group">
+                <label class="col-form-label col-md-2" for="anmeldMenge">Angemeldete Menge:</label>
+                <div class="col-md-5 offset-1">
+                  <input class="form-control mb-lg-2" id="anmeldMenge" type="text" aria-describedby="telHelp"
+                         value="{{_anmeldung.angemeldeteMenge}}">
+                </div>
               </div>
-            </div>
-            <div class="form-group" *ngIf="anmeldung.bemerkung != null">
-              <label class="col-form-label col-md-4" for="anmeldBemerk">Bemerkungen Kunde:</label>
-              <div class="col-md-5 offset-1">
+              <div class="form-group" *ngIf="_anmeldung.bemerkung != null">
+                <label class="col-form-label col-md-4" for="anmeldBemerk">Bemerkungen Kunde:</label>
+                <div class="col-md-5 offset-1">
                 <textarea class="form-control" id="anmeldBemerk" type="text" aria-describedby="telHelp"
-                          disabled="true">{{anmeldung.bemerkung}}</textarea>
+                          disabled="true">{{_anmeldung.bemerkung}}</textarea>
+                </div>
               </div>
-            </div>
-            <div class="form-control">
-              <a class="btn btn-outline-info offset-md-6" href="mosten">abrechnen</a>
-            </div>
-          </form>
+              <div class="form-control">
+                <a class="btn btn-outline-info offset-md-6" href="mosten">abrechnen</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div *ngIf="_loading">
+          <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+          </div>
         </div>
       </div>
     </div>

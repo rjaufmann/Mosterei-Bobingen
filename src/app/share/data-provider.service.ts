@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Rx";
 import {Anmeldung} from "../anmeldungen/anmeldung";
-import {catchError, tap} from "rxjs/operators";
 import {MessageService} from "../message.service";
-import {of} from "rxjs/observable/of";
-import {nextTick} from "q";
-import {error} from "util";
+import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
+import {Observable} from "rxjs/internal/Observable";
+import {of} from "rxjs/internal/observable/of";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataProviderService {
 
   private baseURL: string = environment.apiUrl;

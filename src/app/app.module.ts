@@ -12,6 +12,7 @@ import {RouterModule, Routes} from "@angular/router";
 //import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AnmeldungDetailComponent} from './anmeldung-detail/anmeldung-detail.component';
 import {MostenComponent} from './mosten/mosten.component';
+import {DataProviderService} from "./share/data-provider.service";
 
 
 const appRoutes: Routes = [
@@ -64,9 +65,11 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, DataProviderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(private _dataProviderService: DataProviderService) {
+  }
 }
 
